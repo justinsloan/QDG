@@ -10,9 +10,10 @@ with open('./word_list.txt') as f:
         word_dict[int(index)] = word
 
 class Passphrase:
+    #TODO Copy passphrase to clipboard by clicking on the label
 
     def __init__(self, canvas, point, word_count=6):
-        self.label = Text(point, "Generating Passphrase...")    #constructor statement that instantiates a text label object as 'lblTopRow'
+        self.label = Text(point, "Generating Passphrase...")    #constructor statement that instantiates a text label object as 'label'
         self.label.setFill('blue')
         self.label.setStyle('bold')
         self.label.setSize(18)
@@ -32,7 +33,6 @@ class Passphrase:
         Generates a Diceware passphrase using either quantum or
         locally generated random data, depending on the settings.
         '''
-
         passphrase = []
 
         if quantum:
@@ -57,8 +57,14 @@ class Passphrase:
                     print(this_index)
         return ' '.join(passphrase)
 
+
 def win():
-    myWin = GraphWin("Quantum Diceware", 500, 100)   #constructor statement that instantiates the window object as 'myWin'
+    #TODO Allow user to specify and display any number of passphrase labels
+    #TODO Allow user to save passphrase list to file
+    #TODO Allow user to specify any number of passphrases outputed to file
+    #TODO Create a button to enable/disable Quantum Mode
+
+    myWin = GraphWin("QDG: Quantum Diceware Generator", 500, 100)   #constructor statement that instantiates the window object as 'myWin'
     row_lblStatus = Point(200,10)
     row_lblPhrase = Point(250,30)   #specifies a location on the window canvas for use by any object\
 
@@ -70,7 +76,7 @@ def win():
     btnQuit.activate()
     btnGenerate.activate()
 
-    # Event Loop
+    # Button Event Loop
     pt = myWin.getMouse()
     while not btnQuit.clicked(pt):
         if btnGenerate.clicked(pt):
@@ -86,15 +92,15 @@ def win():
     myWin.close()
     sys.exit(0)
 
+
 def main():
     global verbose
     verbose = False
     global quantum
     quantum = True
-    global write_to_file
-    write_to_file = False
 
     win()
+
 
 if __name__ == '__main__':
     main()

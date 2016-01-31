@@ -3,7 +3,7 @@ from graphics import *
 
 class Button:
 
-   """A button is a lebeled rectangle in a window. It is activated or
+   """A button is a labeled rectangle in a window. It is activated or
    deactivated with the activate() and deactivate() methods. The
    clicked(p) method returns true if the button is active and p is
    inside it."""
@@ -19,7 +19,7 @@ class Button:
       p1 = Point(self.xmin, self.ymin)
       p2 = Point(self.xmax, self.ymax)
       self.rect = Rectangle(p1,p2)
-      self.rect.setFill('lightgray')
+      self.rect.setFill('lightgrey')
       self.rect.draw(win)
       self.label = Text(center, label)
       self.label.draw(win)
