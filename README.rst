@@ -20,6 +20,7 @@ Install
 Generate Passphrase
 
     $ qdg
+
     $ qdg -c 5 > output.txt
 
 Documentation
