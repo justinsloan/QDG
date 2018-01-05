@@ -1,7 +1,7 @@
 ===
 QDG
 ===
-> Diceware passphrases from quantum random data
+Diceware passphrases from quantum random data
 
 .. image:: password_strength.png
 
@@ -17,16 +17,27 @@ Install
 
     $ pip install quantumdiceware
 
-Generate Passphrase
+Generate a Passphrase
 
     $ qdg
 
+Generate five Passphrases and save them to output.txt
+
     $ qdg -c 5 > output.txt
+
+Generate two Passphrases that are eight words long
+
+    $ qdg -c 2 -w 8
 
 Documentation
 -------------
 
+For more help, run:
+
+    $ qdg -h
+
 See `The Diceware Passphrase Home Page <http://world.std.com/~reinhold/diceware.html>`_ to learn more about Diceware.
+
 
 
 Meta
