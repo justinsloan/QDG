@@ -17,7 +17,7 @@ Install
 
     $ pip install quantumdiceware
 
-Usage
+Generate Passphrase
 
     $ qdg
     $ qdg -c 5 > output.txt
@@ -25,15 +25,13 @@ Usage
 Documentation
 -------------
 
-Schedule's documentation lives at `schedule.readthedocs.io <https://schedule.readthedocs.io/>`_.
-
-Please also check the FAQ there with common questions.
+See `The Diceware Passphrase Home Page <http://world.std.com/~reinhold/diceware.html>`_ to learn more about Diceware.
 
 
 Meta
 ----
 
-Justin M. Sloan - `@dbader_org <https://twitter.com/dbader_org>`_ - justin@justinsloan.com
+Justin M. Sloan - `justinsloan.com <https://justinsloan.com>`_ - pydev@justinsloan.com
 
 Public Domain. See ``LICENSE.txt`` for more information.
 
