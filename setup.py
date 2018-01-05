@@ -1,24 +1,31 @@
-from cx_Freeze import setup, Executable
-import sys
+"""setup.py: setuptools control."""
 
-productName = "QDG: Quantum Diceware Generator"
-if 'bdist_msi' in sys.argv:
-    sys.argv += ['--initial-target-dir', 'C:\InstallDir\\' + productName]
-    sys.argv += ['--install-script', 'setup.py']
 
-exe = Executable(
-      script="QDG.py",
-      base="Win32GUI",
-      targetName="QDG.exe"
-     )
+import re
+from setuptools import setup
+
+
+version = re.search(
+    '^__version__\s*=\s*"(.*)"',
+    open('quantumdiceware/quantumdiceware.py').read(),
+    re.M
+    ).group(1)
+
+
+with open("README.rst", "rb") as f:
+    long_descr = f.read().decode("utf-8")
+
 
 setup(
-      name="QDG",
-      version="1.0",
-      author="Justin M. Sloan",
-      description="Generates Diceware passphrases using quantum random data.",
-      executables=[exe],
-      scripts=[
-               'setup.py'
-               ]
-      ) 
+    name = "quantumdiceware",
+    packages = ["quantumdiceware"],
+    entry_points = {
+        "console_scripts": ['qdg = quantumdiceware.quantumdiceware:main']
+        },
+    version = version,
+    description = "Generates Diceware passphrases using quantum random data.",
+    long_description = long_descr,
+    author = "Justin M. Sloan",
+    author_email = "justin@justinsloan.com",
+    url = "http://github.com/justinsloan/qdg",
+    )
