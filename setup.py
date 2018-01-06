@@ -23,7 +23,7 @@ with open("README.rst", "rb") as f:
 setup(
     name = "quantumdiceware",
     packages = ["quantumdiceware"],
-    python_requires=">=3.3",
+    python_requires=">=3.6",
     entry_points = {
         "console_scripts": ['qdg = quantumdiceware.quantumdiceware:main']
         },
@@ -34,7 +34,7 @@ setup(
             'quantumrandom',
         ],
     package_data={'quantumdiceware': ['diceware_word_list.txt']},
-    description = "Generates Diceware passphrases using quantum random data.",
+    description = "Generates Diceware passphrases from quantum random data.",
     long_description = long_descr,
     author = "Justin M. Sloan",
     author_email = "justin@justinsloan.com",

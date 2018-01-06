@@ -3,6 +3,8 @@ QDG
 ===
 Diceware passphrases from quantum random data
 
+|build-status| |docs|
+
 .. image:: password_strength.png
 
 
@@ -55,3 +57,14 @@ Justin M. Sloan - `justinsloan.com <https://justinsloan.com>`_ - pydev@justinslo
 Public Domain. See ``LICENSE.txt`` for more information.
 
 https://github.com/justinsloan/qdg
+
+
+.. |build-status| image:: https://img.shields.io/travis/rtfd/readthedocs.org.svg?style=flat
+    :alt: Build Status
+    :scale: 100%
+    :target: https://travis-ci.org/justinsloan/QDG.svg?branch=master
+
+.. |docs| image:: https://readthedocs.org/projects/docs/badge/?version=latest
+    :alt: Documentation Status
+    :scale: 100%
+    :target: https://qdg.readthedocs.io/en/latest/?badge=latest

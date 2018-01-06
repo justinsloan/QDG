@@ -15,14 +15,16 @@ Usage:
     >>> $ qdg -c 6 > output.txt
 
 Version History:
-0.1.9 - DATE
-- added version option
+0.1.9 - 6 JAN 2018
+- added '--version' option
+- improved verbose mode printing
+- updated documentation, switched to .rst format
 
-0.1.8 - 5 JAN 2017
-- first build
+0.1.8 - 5 JAN 2018
+- first release build
 """
 
-__version__ = "0.1.8"
+__version__ = "0.1.9"
 
 import random
 import argparse
@@ -46,7 +48,13 @@ parser.add_argument("-f","--file",nargs="?",default=word_list_file, help="specif
 parser.add_argument("--version",action="version",version=f"QDG v.{__version__}")
 args = parser.parse_args()
 
-# Load the word list file
+# Set the verbose status
+if args.verbose:
+    verbose = True
+else:
+    verbose = False
+
+# Load the wordlist file
 word_dict = {}
 with open(args.file) as f:
     for line in f.readlines():
@@ -54,32 +62,33 @@ with open(args.file) as f:
         word_dict[int(index)] = word
 
 
-def generate_diceware_phrase(word_count=6, quantum=True, verbose=False):
+def p_verbose(text):
+    if verbose:
+        print(text)
+
+
+def generate_diceware_phrase(word_count=6, quantum=True):
     """Generates a Diceware Passphrase of length N."""
     passphrase = []
 
     if quantum:
-        if verbose:
-            print("Gathering quantum data...".ljust(38))
+        p_verbose("Gathering quantum data...")
         data_count = word_count * 5
         quantum_data = quantumrandom.uint16(data_count)
         dice = (int("".join([str(y) for y in (quantum_data % 6) + 1])))
         roll = [str(dice)[i:i+5] for i in range(0, len(str(dice)), 5)]
         for i in roll:
-            if verbose:
-                print(f"Dice Rolls: {i}")
+            p_verbose(f"Dice Rolls: {i}")
             passphrase.append(word_dict[int(i)])
     else:
-        if verbose:
-            print("Using local random data...")
+        p_verbose("Using local random data...")
         for words in range(0, word_count):
             this_index = 0
             for position in range(0, 5):
                 digit = random.randint(1, 6)
                 this_index += digit * pow(10, position)
             passphrase.append(word_dict[this_index])
-            if verbose:
-                print(f"Dice Rolls: {this_index}")
+            p_verbose(f"Dice Rolls: {this_index}")
     return ' '.join(passphrase)   
 
 
@@ -88,5 +97,5 @@ def main():
 
     # Loop until requested number of passphrases are generated
     for i in range(0,args.count):
-        phrase = generate_diceware_phrase(args.words, args.local, args.verbose)
+        phrase = generate_diceware_phrase(args.words, args.local)
         print(phrase)
