@@ -9,7 +9,7 @@ Diceware passphrases from quantum random data
 Features
 --------
 - Simulates dice rolls by gathering quantum data.
-- Includes the standard Diceware wordlist.
+- Includes the complete standard Diceware wordlist.
 - Generate passphrases from custom wordlists.
 
 Python 3.6 is required.
@@ -20,7 +20,7 @@ Usage
 
 Install
 
-    $ pip install quantumdiceware
+    $ pip3 install quantumdiceware
 
 Generate a Passphrase
 
