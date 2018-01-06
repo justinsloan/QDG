@@ -5,10 +5,15 @@ Diceware passphrases from quantum random data
 
 .. image:: password_strength.png
 
+
 Features
 --------
 - Simulates dice rolls by gathering quantum data.
 - Includes the standard Diceware wordlist.
+- Generate passphrases from custom wordlists.
+
+Python 3.6 is required.
+
 
 Usage
 -----
@@ -29,15 +34,17 @@ Generate two Passphrases that are eight words long
 
     $ qdg -c 2 -w 8
 
+
 Documentation
 -------------
 
-For more help, run:
+For more in-line help, run:
 
     $ qdg -h
 
-See `The Diceware Passphrase Home Page <http://world.std.com/~reinhold/diceware.html>`_ to learn more about Diceware.
+QDG's documentation lives at `qdg.readthedocs.io <http://qdg.readthedocs.io>`_
 
+See `The Diceware Passphrase Home Page <http://world.std.com/~reinhold/diceware.html>`_ to learn more about Diceware.
 
 
 Meta

@@ -1,4 +1,8 @@
-"""setup.py: setuptools control."""
+"""setup.py: setuptools control.
+
+python3 setup.py sdist
+twine upload ./dist/path-to-tar.gz
+"""
 
 
 import re
@@ -19,10 +23,17 @@ with open("README.rst", "rb") as f:
 setup(
     name = "quantumdiceware",
     packages = ["quantumdiceware"],
+    python_requires=">=3.3",
     entry_points = {
         "console_scripts": ['qdg = quantumdiceware.quantumdiceware:main']
         },
     version = version,
+    install_requires=[
+            'numpy',
+            'argparse',
+            'quantumrandom',
+        ],
+    package_data={'quantumdiceware': ['diceware_word_list.txt']},
     description = "Generates Diceware passphrases using quantum random data.",
     long_description = long_descr,
     author = "Justin M. Sloan",
