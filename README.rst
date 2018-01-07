@@ -52,7 +52,7 @@ See `The Diceware Passphrase Home Page <http://world.std.com/~reinhold/diceware.
 Meta
 ----
 
-Justin M. Sloan - `justinsloan.com <https://justinsloan.com>`_ - pydev@justinsloan.com
+Justin M. Sloan - `justinsloan.com <https://justinsloan.com>`_ - `@__repr__sloan <https://twitter.com/__repr__sloan>`_
 
 Public Domain. See ``LICENSE.txt`` for more information.
 
