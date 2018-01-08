@@ -14,7 +14,7 @@ Features
 - Includes the complete standard Diceware wordlist.
 - Generate passphrases from custom wordlists.
 
-Python 3.6 is required.
+*Python 3.6 is required.*
 
 
 Usage
