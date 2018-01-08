@@ -22,7 +22,7 @@ Usage
 
 Install
 
-    $ pip3 install quantumdiceware
+    $ pip install quantumdiceware
 
 Generate a Passphrase
 

@@ -1,4 +1,5 @@
 """
+quantumdiceware.py
 Diceware passphrases generated from quantum random data.
 http://github.com/justinsloan/qdg
 
@@ -32,38 +33,44 @@ import quantumrandom
 import pkg_resources
 
 # Specify the location of the word list inside the package
-resource_name = __name__
-path = "diceware_word_list.txt"
-word_list_file = pkg_resources.resource_filename(resource_name, path)
+RESOURCE_NAME = __name__
+PATH = "diceware_word_list.txt"
+WORD_LIST_FILE = pkg_resources.resource_filename(RESOURCE_NAME, PATH)
 
 # Build the argument parser
 parser = argparse.ArgumentParser(
     description="Generate Diceware passphrases using quantum data.",
     epilog=f"QDG v.{__version__} | by Justin M. Sloan")
-parser.add_argument("-c","--count",nargs="?",default=1,type=int, help="number of passphrases to generate")
-parser.add_argument("-w","--words",nargs="?",default=6,type=int, help="number of words per passphrase")
-parser.add_argument("-v","--verbose",action="store_true", help="increase output verbosity")
-parser.add_argument("-l","--local",action="store_false", help="use local random data, no connection required (faster)")
-parser.add_argument("-f","--file",nargs="?",default=word_list_file, help="specify the word list to use")
-parser.add_argument("--version",action="version",version=f"QDG v.{__version__}")
+parser.add_argument("-c", "--count", nargs="?", default=1, type=int, help="number of passphrases to generate")
+parser.add_argument("-w", "--words", nargs="?", default=6, type=int, help="number of words per passphrase")
+parser.add_argument("-v", "--verbose", action="store_true", help="increase output verbosity")
+parser.add_argument("-l", "--local", action="store_false", help="use local random data, no connection required (faster)")
+parser.add_argument("-f", "--file", nargs="?", default=WORD_LIST_FILE, help="specify the word list to use")
+parser.add_argument("--version", action="version", version=f"QDG v.{__version__}")
 args = parser.parse_args()
 
 # Set the verbose status
+VERBOSE = bool(args.verbose)
+
+# Need to research why the above can replace this
+'''
 if args.verbose:
-    verbose = True
+    VERBOSE = True
 else:
-    verbose = False
+    VERBOSE = False
+'''
 
 # Load the wordlist file
-word_dict = {}
+WORD_DICT = {}
 with open(args.file) as f:
     for line in f.readlines():
         index, word = line.strip().split('\t')
-        word_dict[int(index)] = word
+        WORD_DICT[int(index)] = word
 
 
 def p_verbose(text):
-    if verbose:
+    """Print fucntion for verbose mode."""
+    if VERBOSE:
         print(text)
 
 
@@ -79,7 +86,7 @@ def generate_diceware_phrase(word_count=6, quantum=True):
         roll = [str(dice)[i:i+5] for i in range(0, len(str(dice)), 5)]
         for i in roll:
             p_verbose(f"Dice Rolls: {i}")
-            passphrase.append(word_dict[int(i)])
+            passphrase.append(WORD_DICT[int(i)])
     else:
         p_verbose("Using local random data...")
         for words in range(0, word_count):
@@ -87,15 +94,15 @@ def generate_diceware_phrase(word_count=6, quantum=True):
             for position in range(0, 5):
                 digit = random.randint(1, 6)
                 this_index += digit * pow(10, position)
-            passphrase.append(word_dict[this_index])
+            passphrase.append(WORD_DICT[this_index])
             p_verbose(f"Dice Rolls: {this_index}")
-    return ' '.join(passphrase)   
+    return ' '.join(passphrase)
 
 
 def main():
     """Takes optional arguments and prints passphrases."""
 
     # Loop until requested number of passphrases are generated
-    for i in range(0,args.count):
+    for i in range(0, args.count):
         phrase = generate_diceware_phrase(args.words, args.local)
         print(phrase)

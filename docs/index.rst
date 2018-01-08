@@ -22,7 +22,7 @@ Using pip
 
 .. code:: sh
 
-    $ pip3 install quantumdiceware
+    $ pip install quantumdiceware
 
 Building from source
 
