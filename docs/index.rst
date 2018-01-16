@@ -119,6 +119,11 @@ You can get personal support or submit a bug report on `GitHub Issues`_.
 
 Version History
 ---------------
+0.2.0 BETA
+- added --pretext option
+- aaded --posttext option
+
+
 0.1.9 (6 January 2018)
 
 - added '--version' option
