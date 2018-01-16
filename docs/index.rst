@@ -68,8 +68,6 @@ By default, QDG will use quantum data to generate one passphrase consisting of s
 **[-f, --file]**
     Specify a custom wordlist file. Custom wordlist files should be in plain text format with one dice roll per line. There are many alternate and foreign language wordlists available on the official `Diceware`_ website.
 
-    Example:
-
 .. code:: sh
 
     $ qdg --file ./alt_wordlist.txt
@@ -79,6 +77,30 @@ By default, QDG will use quantum data to generate one passphrase consisting of s
 
 **[-v, -verbose]**
     Activates verbose mode. Dice rolls will be displayed along with the passphrase so they can easily be compared to the wordlist.
+
+.. code:: sh
+
+    $ qdg -l -v
+    Using local random data...
+    Dice Rolls: 54642
+    Dice Rolls: 14415
+    Dice Rolls: 35165
+    Dice Rolls: 51352
+    Dice Rolls: 55552
+    Dice Rolls: 52242
+    soma blown karen rasa stoop rondo
+
+**[--char]**
+    Specify the character that is placed between words in the passphrase. A space character is used by default, but just about any character or arbitrary text of any length may be used.
+
+.. code:: sh
+
+    $qdg --char -
+    vend-grist-hobby-mark-enamel-job
+    $qdg --char ""
+    vendgristhobbymarkenameljob
+    $qdg --char "my text"
+    vendmy textgristmy texthobbymy textmarkmy textenamelmy textjobmy text
 
 **[--version]**
     Displays the version number and exits.
