@@ -102,6 +102,12 @@ By default, QDG will use quantum data to generate one passphrase consisting of s
     $qdg --char "my text"
     vendmy textgristmy texthobbymy textmarkmy textenamelmy textjobmy text
 
+**[--pretext]**
+    Specify text to be added to the beginning of a passphrase.
+
+**[--posttext]**
+    Specify text to be added to the end of a passphrase.
+
 **[--version]**
     Displays the version number and exits.
 
