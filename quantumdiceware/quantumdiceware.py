@@ -39,6 +39,7 @@ __author__ = "Justin M. Sloan"
 
 import random
 import argparse
+import time
 import quantumrandom
 import pkg_resources
 
@@ -109,8 +110,13 @@ def generate_diceware_phrase(word_count=6, local=False, char=" ", pre="", post="
 
 def main():
     """Takes optional arguments and prints passphrases."""
+    # Get the time se we can calculate how long it takes
+    start_time = time.time()
 
     # Loop until requested number of passphrases are generated
     for i in range(0, args.count):
         phrase = generate_diceware_phrase(args.words, LOCAL, str(args.char), str(args.pretext), str(args.posttext))
         print(phrase)
+
+    # Calculate how long it took and print if Verbose mode is on
+    p_verbose(f"--- {time.time() - start_time} seconds ---")
