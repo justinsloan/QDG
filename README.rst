@@ -1,7 +1,7 @@
 ===
 QDG
 ===
-Diceware passphrases from quantum random data
+Generate truly random diceware passphrases.
 
 |build-status| |docs|
 
