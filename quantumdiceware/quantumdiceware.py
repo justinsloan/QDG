@@ -16,7 +16,7 @@ Usage:
     >>> $ qdg -c 6 > output.txt
 
 Version History:
-0.2.0 - (DATE)
+0.3.0 - 10 APRIL 2022
  - code optimization
  - use a custom character between words with '--char' option
  - TODO: defaults to local if quantum data unavailable
