@@ -33,8 +33,8 @@ Version History:
 - first release build
 """
 
-__version__ = "0.2.0 BETA"
-__date__ = "DATE"
+__version__ = "0.3.0"
+__date__ = "10 APRIL 2022"
 __author__ = "Justin M. Sloan"
 
 import random
