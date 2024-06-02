@@ -72,7 +72,7 @@ parser.add_argument("-c", "--count", nargs="?", default=1, type=int, help="numbe
 parser.add_argument("-w", "--words", nargs="?", default=6, type=int, help="number of words per passphrase")
 parser.add_argument("-v", "--verbose", action="store_true", help="increase output verbosity")
 parser.add_argument("-f", "--file", nargs="?", default=WORD_LIST_FILE, help="specify the word list to use")
-parser.add_argument("--char", action="store", default=" ", type=str, help="set the character between words")
+parser.add_argument("--char", action="store", default="-", type=str, help="set the character between words")
 parser.add_argument("--pretext", action="store", default="", type=str, help="specify text to appear before the passphrase")
 parser.add_argument("--posttext", action="store", default="", type=str, help="specify text to appear after the passphrase")
 parser.add_argument("--version", action="version", version=f"QDG v.{__version__}, {__date__}")
@@ -195,7 +195,7 @@ def generate_password(entropy, word_count=6, char=" ", pre="", post=""):
     dice_words = []
     dice = []
 
-    block_count = word_count * 5
+    block_count = word_count * 6
     blocks = entropy[:block_count] # slice block_count items from entropy
     del entropy[:block_count]      # delete the sliced items from entropy
 
@@ -203,18 +203,17 @@ def generate_password(entropy, word_count=6, char=" ", pre="", post=""):
         die = int(block, 16) % 6 + 1
         dice.append(str(die))
 
+    number = int(blocks[-1], 16) % 100
+
     dice = ''.join(dice)
     roll = [str(dice)[i:i + 5] for i in range(0, len(str(dice)), 5)]
     for i in roll:
         __verbose(f"Dice Rolls: {i}")
-        dice_words.append(WORD_DICT[int(i)])
-    """
-    dice = int("".join([str(y) for y in int(block, 16) % 6 + 1]))
-    roll = [str(dice)[i:i + 5] for i in range(0, len(str(dice)), 5)]
-    for i in roll:
-        __verbose(f"Dice Rolls: {i}")
-        dice_words.append(WORD_DICT[int(i)])
-    """
+        # TODO make capitalization an arg option
+        token = WORD_DICT[int(i)]
+        print(token)
+        word = token[0].upper() + token[1:] + str(number)
+        dice_words.append(word)
 
     password = pre + char.join(dice_words) + post
 
