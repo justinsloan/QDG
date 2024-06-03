@@ -72,9 +72,6 @@ By default, QDG will use quantum data to generate one passphrase consisting of s
 
     $ qdg --file ./alt_wordlist.txt
 
-**[-l, --local]**
-    Use locally obtained random data. This is useful if there is no internet connection available or if local data is preferred.
-
 **[-v, -verbose]**
     Activates verbose mode. Dice rolls will be displayed along with the passphrase so they can easily be compared to the wordlist.
 
@@ -119,19 +116,28 @@ You can get personal support or submit a bug report on `GitHub Issues`_.
 
 Version History
 ---------------
-0.2.0 BETA
+**1.0 (30 May 2024)**
+
+- major changes to code base
+- `quantumrandom` package no longer required
+- aligned entropy collection with the new ANU QRNG API requirements
+- deprecated support for local pseudorandom generators
+
+
+**0.2.0 BETA**
+
 - added --pretext option
-- aaded --posttext option
+- added --posttext option
 
 
-0.1.9 (6 January 2018)
+**0.1.9 (6 January 2018)**
 
 - added '--version' option
 - improved verbose mode printing
 - updated documentation, switched to .rst format
 
 
-0.1.8 (5 January 2018)
+**0.1.8 (5 January 2018)**
 
 - first build release
 

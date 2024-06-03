@@ -33,13 +33,6 @@ Requires Python 3.6 or better
 #
 # For more information, please refer to <http://unlicense.org/>
 ##########################################################################
-
- - how to securely store data in RAM?
-   once the entropy block is loaded into RAM, it can be intercepted by
-   any other process. is there a way to secure it? encrypt it before
-   it goes into RAM?
- - verbose mode is too verbose!
-   some information is better for logs/debugging than verbose output
 """
 
 __version__ = "3"
@@ -194,25 +187,35 @@ def generate_password(entropy, word_count=6, char=" ", pre="", post=""):
     """
     dice_words = []
     dice = []
+    numbers = []
 
-    block_count = word_count * 6
-    blocks = entropy[:block_count] # slice block_count items from entropy
-    del entropy[:block_count]      # delete the sliced items from entropy
+    block_count = word_count * 5              # get enough blocks for the number of words
+    blocks = entropy[:block_count]            # slice block_count items from entropy
+    del entropy[:block_count]                 # delete the sliced items from entropy
 
-    for block in blocks:
+    rand_num_count = word_count               # get enough blocks for use a base10 numbers
+    num_blocks = entropy[:rand_num_count]     # slice rand_num_count items from entropy
+    del entropy[:rand_num_count]              # delete the sliced items from entropy
+
+    for block in blocks:                      # convert hexadecimal blocks to mod6
         die = int(block, 16) % 6 + 1
         dice.append(str(die))
 
-    number = int(blocks[-1], 16) % 100
+    for num in num_blocks:                    # convert hexadecimal blocks to mod99
+        number = int(num, 16) % 99
+        numbers.append(str(number))
 
     dice = ''.join(dice)
     roll = [str(dice)[i:i + 5] for i in range(0, len(str(dice)), 5)]
+    num_loop = 0
     for i in roll:
         __verbose(f"Dice Rolls: {i}")
         # TODO make capitalization an arg option
         token = WORD_DICT[int(i)]
-        print(token)
-        word = token[0].upper() + token[1:] + str(number)
+        rand_number = numbers[num_loop]
+        num_loop += 1
+        __verbose(str(token + rand_number))
+        word = token[0].upper() + token[1:] + str(rand_number)
         dice_words.append(word)
 
     password = pre + char.join(dice_words) + post

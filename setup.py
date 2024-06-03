@@ -29,9 +29,14 @@ setup(
         },
     version = version,
     install_requires=[
-            'numpy',
+            'dotenv',
             'argparse',
-            'quantumrandom',
+            'tqdm',
+            'requests',
+            'json',
+            'time',
+            'importlib',
+            'os'
         ],
     package_data={'quantumdiceware': ['diceware_word_list.txt']},
     description = "Generates Diceware passphrases from quantum random data.",
