@@ -7,13 +7,13 @@ Generate truly random diceware passphrases.
 
 .. image:: password_strength.png
 
-The goal of this project is to generate cryptographically-strong, truly random passwords that cannot be reverse engineered.
+**The goal of this project is to generate cryptographically-strong, truly random passwords that cannot be reverse engineered.**
 
 Features
 --------
-- Simulates dice rolls by gathering quantum data.
-- Generate cryptographically-strong, truly random passwords.
-- Generate passphrases from custom wordlists.
+- Simulates dice rolls by gathering quantum data
+- Generate cryptographically-strong, truly random passwords
+- Customize passphrases with a custom wordlist, separator, pretext, or post-text
 
 *Python 3.6 is required.*
 
