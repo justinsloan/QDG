@@ -1,3 +1,5 @@
+python-dotenv
 argparse
-numpy
-quantumrandom
+tqdm
+requests
+importlib

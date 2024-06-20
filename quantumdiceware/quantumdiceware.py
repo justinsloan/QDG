@@ -35,8 +35,8 @@ Requires Python 3.6 or better
 ##########################################################################
 """
 
-__version__ = "3"
-__date__ = "30 MAY 2024"
+__version__ = "4.2"
+__date__ = "20 JUNE 2024"
 __author__ = "Justin M. Sloan"
 
 from fileinput import lineno

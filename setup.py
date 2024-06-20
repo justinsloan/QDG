@@ -2,6 +2,7 @@
 
 python3 setup.py sdist
 twine upload ./dist/path-to-tar.gz
+
 """
 
 
@@ -29,14 +30,11 @@ setup(
         },
     version = version,
     install_requires=[
-            'dotenv',
+            'python-dotenv',
             'argparse',
             'tqdm',
             'requests',
-            'json',
-            'time',
             'importlib',
-            'os'
         ],
     package_data={'quantumdiceware': ['diceware_word_list.txt']},
     description = "Generates Diceware passphrases from quantum random data.",
