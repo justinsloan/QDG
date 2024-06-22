@@ -5,6 +5,12 @@ http://github.com/justinsloan/qdg
 
 Requires Python 3.6 or better
 
+# Create the distribution
+python3 setup.py sdist
+
+# Upload to PyPi
+twine upload ./dist/path-to-tar.gz
+
 ##########################################################################
 # PUBLIC DOMAIN RELEASE                                                  #
 ##########################################################################
@@ -35,7 +41,7 @@ Requires Python 3.6 or better
 ##########################################################################
 """
 
-__version__ = "4.2"
+__version__ = "0.4.2"
 __date__ = "20 JUNE 2024"
 __author__ = "Justin M. Sloan"
 
@@ -84,7 +90,9 @@ with open(args.file) as f:
 
 
 def __verbose(text):
-    """Print function for verbose mode."""
+    """
+    If verbose mode is enabled, print the message to stdout.
+    """
     if VERBOSE:
         print(text)
 

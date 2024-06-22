@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: quantumdiceware
-Version: 4.2
+Version: 0.4.2
 Summary: Generates Diceware passphrases from quantum random data.
 Home-page: http://github.com/justinsloan/qdg
 Author: Justin M. Sloan

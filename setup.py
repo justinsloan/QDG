@@ -1,6 +1,9 @@
 """setup.py: setuptools control.
 
+# Create the distribution
 python3 setup.py sdist
+
+# Upload to PyPi
 twine upload ./dist/path-to-tar.gz
 
 """
