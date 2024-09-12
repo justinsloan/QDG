@@ -3,10 +3,6 @@ QDG
 ===
 Generate truly random diceware passphrases.
 
-|build-status| |docs|
-
-.. image:: password_strength.png
-
 **The goal of this project is to generate cryptographically-strong, truly random passwords that cannot be reverse engineered.**
 
 Features
@@ -15,7 +11,7 @@ Features
 - Generate cryptographically-strong, truly random passwords
 - Customize passphrases with a custom wordlist, separator, pretext, or post-text
 
-*Python 3.6 is required.*
+*Python 3.6+ is required.*
 
 
 Usage
@@ -58,14 +54,3 @@ Justin M. Sloan - `justinsloan.com <https://justinsloan.com>`_
 Public Domain. See ``LICENSE.txt`` for more information.
 
 https://github.com/justinsloan/qdg
-
-
-.. |build-status| image:: https://travis-ci.org/justinsloan/QDG.svg?branch=master
-    :alt: Build Status
-    :scale: 100%
-    :target: https://travis-ci.org/justinsloan/QDG.svg?branch=master
-
-.. |docs| image:: https://readthedocs.org/projects/docs/badge/?version=latest
-    :alt: Documentation Status
-    :scale: 100%
-    :target: https://qdg.readthedocs.io/en/latest/?badge=latest

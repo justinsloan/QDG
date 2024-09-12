@@ -6,7 +6,7 @@ http://github.com/justinsloan/qdg
 Requires Python 3.6 or better
 
 # Create the distribution
-python3 setup.py sdist
+python setup.py sdist
 
 # Upload to PyPi
 twine upload ./dist/path-to-tar.gz
@@ -41,8 +41,8 @@ twine upload ./dist/path-to-tar.gz
 ##########################################################################
 """
 
-__version__ = "0.4.2"
-__date__ = "20 JUNE 2024"
+__version__ = "0.4.4"
+__date__ = "8 SEPTEMBER 2024"
 __author__ = "Justin M. Sloan"
 
 from fileinput import lineno
@@ -52,16 +52,18 @@ import requests
 import json
 import argparse
 import time
-import importlib.resources
 import os
+
+# Load the standard wordlist file
+from .diceware_word_list import WORD_DICT
 
  # Load environment variables from .env
 load_dotenv()
 
 # Specify the location of the word list inside the package
 RESOURCE_NAME = __package__
-PATH = "diceware_word_list.txt"
-WORD_LIST_FILE = importlib.resources.path(RESOURCE_NAME, PATH)
+#PATH = "diceware_word_list.txt"
+WORD_LIST_FILE = ""  #importlib.resources.path(RESOURCE_NAME, PATH)
 
 # Build the argument parser
 parser = argparse.ArgumentParser(
@@ -81,12 +83,13 @@ args = parser.parse_args()
 VERBOSE = bool(args.verbose) # Sets VERBOSE to True if arg is provided, False if not
 #VERBOSE = True
 
-# Load the standard wordlist file
-WORD_DICT = {}
-with open(args.file) as f:
-    for line in f.readlines():
-        index, word = line.strip().split('\t')
-        WORD_DICT[int(index)] = word
+# Check for a custom wordlist file and load it
+if not WORD_LIST_FILE == "":
+    WORD_DICT = {}
+    with open(args.file) as f:
+        for line in f.readlines():
+            index, word = line.strip().split('\t')
+            WORD_DICT[int(index)] = word
 
 
 def __verbose(text):
